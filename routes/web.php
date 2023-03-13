@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AnggotaController;
+use App\Http\Controllers\DepositController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Redis;
 /*
@@ -24,3 +25,11 @@ Route::get('/tes', function () {
 });
 
 Route::get('/anggota', [App\Http\Controllers\AnggotaController::class, 'getAnggota'])->name('member');
+// deposite
+Route::get('/deposit', [App\Http\Controllers\DepositController::class, 'index'])->name('deposit');
+Route::post('/deposit/create', [App\Http\Controllers\DepositController::class, 'deposit'])->name('depocreate');
+Route::get('/mark-as-read', [App\Http\Controllers\DepositController::class,'markAsRead'])->name('mark-as-read');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
