@@ -41,9 +41,11 @@ class DepositSuccessful extends Notification
      */
     public function toMail($notifiable)
     {
+        $url = url('/deposit');
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
+                    ->greeting('Hello,')
+                    ->line('Your deposit of '. $this->amount. ' was successful.')
+                    ->action('View dashboard', url('/home'))
                     ->line('Thank you for using our application!');
     }
 
